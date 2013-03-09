@@ -1,0 +1,79 @@
+<!-- Analytics by GitHub Gauges -->
+<script type="text/javascript">
+  var _gauges = _gauges || [];
+  (function() {
+    var t   = document.createElement('script');
+    t.type  = 'text/javascript';
+    t.async = true;
+    t.id    = 'gauges-tracker';
+    t.setAttribute('data-site-id', '{{ config.analytics_key }}');
+    t.src = '//secure.gaug.es/track.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(t, s);
+  })();
+</script>
+
+
+<!-- controlling what shows up in the data view -->
+<script type="text/javascript">
+
+$(document).ready(function() {
+  
+  formCleanUp();
+  
+  function formCleanUp() {  
+  // hide pointless location type label
+  $("label[for=place-location_type]").hide();  
+  
+  // add some classes to make selections easier...
+
+  //existing
+  $("[id*=existing]").addClass("existing");
+  $("label[for*=existing]").addClass("existing");
+  
+  //problem
+  $("[id*=problem]").addClass("problem");
+  $("label[for*=problem]").addClass("problem");
+  $(".fileinput-container").addClass("problem");
+
+  //new
+  $("[id*=new]").addClass("new");
+  $("label[for*=new]").addClass("new");
+
+  //add a label to the name and submit boxes
+  $("[id*=place-submitter]").addClass("existing problem new");
+  $("label[for*=place-submitter]").addClass("existing problem new");
+  $("#save-place-btn").addClass("existing problem new");
+  
+  //now hide everything...
+  $(".existing,.problem,.new").hide();
+  
+  $("#place-location_type").change(function() {
+        
+    // set everything to have hidden class
+  $(".existing,.problem,.new").hide();
+        
+    // choose what will show up
+    var chosen = $("#place-location_type").val();
+    
+    switch (chosen)
+    {
+      case "no-choice":
+        break;
+      case "restroom-existing":
+        $(".existing").show();
+        break;
+      case "problem":
+        $(".problem").show();
+        break;
+      case "restroom-needed":
+      $(".new").show();
+        break;            
+    }
+    
+  });
+  
+  } // end of formCleanUp
+  
+})
+</script>
