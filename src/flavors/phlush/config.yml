@@ -27,17 +27,17 @@ map:
 # The values map the place type to map icons (defined below).
 place_types:
   restroom-existing:
-    default: blue
-    focused: red
-    label: _(Public restrooms)
+    default: restroom-existing
+    focused: restroom-existing-selected
+    label: _(Existing Public Restroom)
   problem:
-    default: blue
-    focused: red
-    label: _(Problem areas)
+    default: problem
+    focused: problem-selected
+    label: _(Problem Area)
   restroom-needed:
-    default: blue
-    focused: red
-    label: _(Restrooms needed)
+    default: restroom-needed
+    focused: restroom-needed-selected
+    label: _(Location Needing A Restroom)
   no-choice:
     default: blue
     focused: red
@@ -46,28 +46,67 @@ place_types:
 # Defines place icons. See http://leaflet.cloudmade.com/reference.html#icon
 # for documention of each property. Any omitted property will be undefined.
 place_type_icons:
-  blue:
-    iconUrl: /static/css/images/feature-point.png
+  restroom-existing:
+    #iconUrl: /static/css/images/markers/dot-e644b7.png
+    iconUrl: /static/css/images/bathroom.png
     iconSize:
-      width: 17
-      height: 18
+      width: 60
+      height: 60
     iconAnchor:
-      x: 9
-      y: 9
-  red:
-    iconUrl: /static/css/images/marker-focused.png
+      x: 30
+      y: 30
+  problem:
+    iconUrl: /static/css/images/problem.png
+    iconSize:
+      width: 60
+      height: 60
+    iconAnchor:
+      x: 30
+      y: 30
+  restroom-needed:
+    iconUrl: /static/css/images/bathroom-wanted.png
+    iconSize:
+      width: 60
+      height: 60
+    iconAnchor:
+      x: 30
+      y: 30
+  restroom-existing-selected:
+    iconUrl: /static/css/images/bathroom-selected.png
     shadowUrl: /static/css/images/marker-shadow.png
     iconSize:
-      width: 25
+      width: 60
+      height: 60
+    shadowSize:
+      width: 3
       height: 41
+    iconAnchor:
+      x: 30
+      y: 30
+  problem-selected:
+    iconUrl: /static/css/images/problem-selected.png
+    shadowUrl: /static/css/images/marker-shadow.png
+    iconSize:
+      width: 60
+      height: 60
     shadowSize:
       width: 41
       height: 41
     iconAnchor:
-      x: 12
-      y: 41
-
-
+      x: 30
+      y: 30
+  restroom-needed-selected:
+    iconUrl: /static/css/images/bathroom-wanted-selected.png
+    shadowUrl: /static/css/images/marker-shadow.png
+    iconSize:
+      width: 60
+      height: 60
+    shadowSize:
+      width: 41
+      height: 41
+    iconAnchor:
+      x: 30
+      y: 30
 activity:
   # Optional. Activity is supported by default. Set to false to disable.
   enabled: true
@@ -77,9 +116,9 @@ activity:
 place:
   adding_supported: true
   add_button_label: _(Contribute to the map)
-  action_text: _(added)
-  title: _(Tell us more...)
-  action_text: _(created)
+  action_text: _(mapped)
+  title: _(Add more information)
+  action_text: _(mapped)
   anonymous_name: _(Someone)
   submit_button_label: _(Share)
   items:
@@ -184,11 +223,3 @@ pages:
   - title: _(About)
     slug: about
     url: /static/pages/overview.html
-
-  - title: _(Why Shareabouts?)
-    slug: why
-    url: /static/pages/why.html
-
-  - title: _(Features)
-    slug: features
-    url: /static/pages/features.html
