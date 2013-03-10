@@ -50,7 +50,7 @@ a:hover {
  * as to not break it scaling via media queries. */
 
 #site-title {
-/*  font-family: Impact, sans-serif;*/
+  font-family: Arial, sans-serif;
 /*  color: #fff;*/
 /*  text-shadow: none;*/
 }
